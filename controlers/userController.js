@@ -20,7 +20,7 @@ const registerUser = async (req, res) => {
   const { name, email, phone, password, security_question } = req.body;
   const userExists = await UserModel.findOne({ email });
   if (userExists) {
-    res.status(400).json({ message: "user already exists" });
+    res.status(200).json({ message: "user already exists" });
     return;
   }
   try {
@@ -33,7 +33,7 @@ const registerUser = async (req, res) => {
       security_question,
     });
     await user.save();
-    res.status(201).json({ message: "User Registered successfully" });
+    res.status(200).json({ message: "User Registered successfully" });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Registration failed" });
