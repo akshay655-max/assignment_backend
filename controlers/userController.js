@@ -95,6 +95,7 @@ const checkSecurityQuestion = async (req, res) => {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
       res.status(200).json({
         token: token,
+        message:"security question verified"
       });
     } else if (question !== user.security_question.question) {
       res.status(200).json({ message: "Wrong question selected" });
