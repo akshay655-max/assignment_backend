@@ -97,9 +97,9 @@ const checkSecurityQuestion = async (req, res) => {
         token: token,
       });
     } else if (question !== user.security_question.question) {
-      res.status(500).json({ message: "Wrong question selected" });
+      res.status(200).json({ message: "Wrong question selected" });
     } else if (answer !== user.security_question.answer) {
-      res.status(500).json({ message: "Wrong answer" });
+      res.status(200).json({ message: "Wrong answer" });
     }
   } catch (err) {
     console.log(err);
